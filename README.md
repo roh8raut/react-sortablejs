@@ -6,6 +6,8 @@ We're now on version 2.0! A major API overhaul with typescript types.
 
 Consider trying it out if you had any troubles earlier.
 
+a small change
+
 ## Table of Contents
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
