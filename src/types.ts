@@ -51,6 +51,8 @@ export interface ReactSortableProps<T>
    * the original element will be moved to `B`
    * and the new clone will be placed in `A`
    */
+
+  needFragment?: boolean;
   clone?: (currentItem: T, evt: SortableEvent) => T;
 
   // other classic DOM attributes.
