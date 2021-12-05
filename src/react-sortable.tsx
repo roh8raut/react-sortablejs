@@ -7,6 +7,7 @@ import {
   createRef,
   ReactElement,
   RefObject,
+  Fragment
 } from "react";
 import Sortable, { MoveEvent, Options, SortableEvent } from "sortablejs";
 import invariant from "tiny-invariant";
@@ -73,8 +74,20 @@ Please read the updated README.md at https://github.com/SortableJS/react-sortabl
   }
 
   render(): JSX.Element {
-    const { tag, style, className, id } = this.props;
+    const { tag, style, className, id, needFragment = false } = this.props;
     const classicProps = { style, className, id };
+
+    if (needFragment) {
+      return createElement(
+        Fragment,
+        {
+          // @todo - find a way (perhaps with the callback) to allow AntD components to work
+          ref: this.ref,
+          ...classicProps,
+        },
+        this.getChildren()
+      );
+    }
 
     // if no tag, default to a `div` element.
     const newTag = !tag || tag === null ? "div" : tag;
